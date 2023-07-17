@@ -21,4 +21,12 @@ public class Main {
 
     }
 
+    private static void signalReceived(Application app, int number) {
+        try {
+            app.switchSignal(number);
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            System.out.println("There is no signal at "+number);
+        }
+    }
+
 }
