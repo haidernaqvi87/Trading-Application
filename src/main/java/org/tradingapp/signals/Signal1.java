@@ -11,7 +11,7 @@ public class Signal1 implements Signal {
     }
 
     public void execute() {
-        algo.setAlgoParam(0,100);
+        algo.setAlgoParam(1,101);
         algo.submitToMarket();
         algo.doAlgo();
     }

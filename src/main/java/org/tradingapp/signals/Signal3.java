@@ -11,7 +11,7 @@ public class Signal3 implements Signal {
     }
 
     public void execute() {
-        algo.setAlgoParam(0,100);
+        algo.setAlgoParam(3,103);
         algo.submitToMarket();
         algo.doAlgo();
     }
