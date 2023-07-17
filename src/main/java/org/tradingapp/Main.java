@@ -6,6 +6,10 @@ import org.tradingapp.signals.Signal0;
 import org.tradingapp.signals.Signal1;
 import org.tradingapp.signals.Signal2;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class Main {
     public static void main(String[] args) {
         Application app = new Application();
@@ -18,6 +22,17 @@ public class Main {
         app.setSignal(0, new Signal0(algo));
         app.setSignal(1, new Signal1(algo));
         app.setSignal(2, new Signal2(algo));
+
+        //JUST FOR THE SAKE OF EXAMPLE consider it to be a service. Of course one can use a broadcast receiver
+        Runnable drawRunnable = () -> {
+            //HERE we are getting the signal from a fake HTTP endpoint
+            int num = api.getSignalInt();
+            signalReceived(app,num);
+        };
+
+        //Let's run the SERVICE after every 5 seconds to receive a signal int
+        ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
+        exec.scheduleAtFixedRate(drawRunnable , 0, 5, TimeUnit.SECONDS);
 
     }
 
