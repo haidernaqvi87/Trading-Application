@@ -2,6 +2,7 @@ package org.tradingapp;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.tradingapp.external.Algo;
 import org.tradingapp.interfaces.Signal;
 import org.tradingapp.signals.Signal1;
@@ -17,13 +18,28 @@ class ApplicationTest {
     void setUp() {
         mockApplication = mock(Application.class);
         mockAlgo = mock(Algo.class);
-        mockSignal = mock(Signal1.class);
+        mockSignal = new Signal1(mockAlgo);
     }
 
     @Test
-    public void test() {
+    public void setSignalTest() {
         //when a signal is set
         //verify if the signal is being set
         //verify the signal received and switchSignal is called
+    }
+
+
+    @Test
+    public void getSignalTest() {
+        //when a get signal is called
+        //verify get signal is called
+        //verify success
+    }
+
+    @Test
+    public void setSignalTestWithException() {
+        //when a get signal is called
+        //verify get signal is called
+        //verify exception being thrown
     }
 }
